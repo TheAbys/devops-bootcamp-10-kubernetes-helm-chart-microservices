@@ -60,3 +60,25 @@ Container with root access can access host system
 Keep kubernetes up-to-date
 
 Update node by node to not have a downtime
+
+# 23 - Demo project: Create Helm Chart for Microservices
+
+Create new helm chart through
+
+    helm create <name>
+
+The template can be checked against the helm chart, an error will be shown or the final configuration files.
+
+    helm template -f <values-file> <helmchart>
+
+    cd charts
+    helm template -f ../values/email-service-values.yaml microservce
+
+Check the file for errors or warnings
+
+    helm lint -f ../values/email-service-values.yaml microservice
+
+We can also run a helm chart without actually making deployments
+
+    helm install --dry-run -f <values.yaml> <servicename> <chartname>
+
