@@ -24,3 +24,14 @@ Checks if the application is already available, otherwise it would lead to possi
 
 It is also possible to set an initial delay when the application should be first probed.
 
+## resources
+
+For a container resources requests and limits should be set. 
+Without this configuration it is possible that a container starves other containers.
+
+Setting requests means basically the default requests required under normal load.
+Setting limits means the container can't go beyond that and therefore not starve anyone.
+
+The unit cpu: 100m or memory: 64Mi is millicore and Mebibyte.
+1 CPU Core equals 1000m, this means this container with 100m takes just 10% of the CPU load. This topic is really complex, has something to do with the kernel and how it manages CPU time etc.
+
