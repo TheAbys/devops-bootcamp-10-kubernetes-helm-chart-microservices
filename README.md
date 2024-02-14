@@ -35,3 +35,28 @@ Setting limits means the container can't go beyond that and therefore not starve
 The unit cpu: 100m or memory: 64Mi is millicore and Mebibyte.
 1 CPU Core equals 1000m, this means this container with 100m takes just 10% of the CPU load. This topic is really complex, has something to do with the kernel and how it manages CPU time etc.
 
+## NodePort is bad practise
+
+Convert the service to a LoadBalancer service.
+
+## Replicas
+
+It is better to always have at least two replicas.
+
+## Namespaces
+
+Use namespaces to create privileges on them etc.
+
+## Security Best Practises
+
+Check images for vunerabilities
+
+## No root access for containers
+
+Container with root access can access host system
+
+## Kubernetes version
+
+Keep kubernetes up-to-date
+
+Update node by node to not have a downtime
