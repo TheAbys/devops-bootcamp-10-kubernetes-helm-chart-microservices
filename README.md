@@ -6,3 +6,21 @@ This way we can configure everything like we did in the config.yaml file.
 For redis we configured a empty directory volume which is basically just an in memory storage for the cart.
 
 Some additional configuration information we required we could look up on the services documentation, like that the profiler must be disabled when we do not have a profiler service in our cluster.
+
+# 22 - Production & Security Best Practises
+
+## livenessProbe
+
+Does it while the application is running
+
+Adding livenessProbe to each container gives kubernetes the possibility to check if the application inside the pod is still running and if not trigger a recreation.
+It can be a interval query on different protocols and ports like grpc or https.
+
+## readinessProbe
+
+Does it while the application is still in startup
+
+Checks if the application is already available, otherwise it would lead to possible errors if other services try to communicate with it.
+
+It is also possible to set an initial delay when the application should be first probed.
+
