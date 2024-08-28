@@ -82,3 +82,69 @@ We can also run a helm chart without actually making deployments
 
     helm install --dry-run -f <values.yaml> <servicename> <chartname>
 
+# 24 - Demo project: Deploy Microservices with Helmfile
+
+Create a install shell script with multiple helm install commands is possible, but not perfect.
+If we need to uninstall all those service, we can't, we have to do it manually.
+
+Best practise: Use Helmfile
+
+Download current release of helmfile with curl
+
+    curl -L https://github.com/helmfile/helmfile/releases/download/v0.161.0/helmfile_0.161.0_linux_amd64.tar.gz -o helmfile.tar.gz
+
+Extract the file
+
+    tar -xvf helmfile.tar.gz
+
+Move the helmfile file to opt directory
+
+    mkdir /opt/helmfile
+    mv helmfile /opt/helmfile/helmfile
+    chown root /opt/helmfile/helmfile
+
+Create a symlink to make it available in the shell
+
+    ln -s /opt/helmfile/helmfile /usr/local/bin/helmfile
+
+For zsh add it to the ~/.zshrc PATH variable
+
+    PATH=$PATH:/opt/helmfile/helmfile
+
+Install all services
+
+    helmfile sync
+
+Uninstall all services
+
+    helmfile destory
+
+
+
+# 1 - 
+
+There are multiple solutions to handle containers in the cloud, self-managed, semi-managed and fully-managed.
+
+# 2 - Create EKS cluster with AWS
+
+Create IAM role for EKS Cluster
+
+    k0938261_training_eks-cluster-role
+
+Create VPC because default VPC is not EKS optimized
+As the Control plane nodes are AWS managed they are connected in another VPC and must be able to communicate with the worker nodes in our VPC.
+
+VPCs are created through CloudFormation
+https://s3.us-west-2.amazonaws.com/amazon-eks/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml
+
+But this doesn't work because of company restrictions or because the subnets are already in use.
+
+After the EKS Cluster is set up:
+
+    aws eks update-kubeconfig --name eks-cluster-test
+
+Show API-Server url
+
+    kubectl cluster-info
+
+

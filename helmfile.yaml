@@ -1,7 +1,10 @@
 releases: 
-  - name: xxxx
-    chart: xxxx
+  - name: rediscart
+    chart: charts/redis
     values: 
-      - xxxx.yaml
-      - appReplicas: "xxxx"
-      - volumeName: "xxxx"
+      - values/redis-values.yaml
+
+  - name: emailservice
+    chart: charts/microservice
+    values: 
+      - values/email-service-values.yaml
