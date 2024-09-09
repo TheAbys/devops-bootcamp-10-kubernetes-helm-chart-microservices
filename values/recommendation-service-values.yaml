@@ -1,4 +1,4 @@
-appName: emailservice
+appName: recommendationservice
 appImage: gcr.io/google-samples/microservices-demo/recommendationservice
 appVersion: v0.8.0
 appReplicas: 2

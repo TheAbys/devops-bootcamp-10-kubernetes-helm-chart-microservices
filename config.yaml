@@ -304,7 +304,7 @@ spec:
     spec:
       containers:
       - name: service
-        image: gcr.io/google-samples/microservices-demo/shippingservice:v0.8.0
+        image: gcr.io/google-samples/microservices-demo/adservice:v0.8.0
         ports:
         - containerPort: 9555
         env:
@@ -541,7 +541,7 @@ spec:
         - name: CHECKOUT_SERVICE_ADDR
           value: "checkoutservice:5050"
         - name: AD_SERVICE_ADDR
-          value: "adservice:955"
+          value: "adservice:9555"
         livenessProbe:
           httpGet:
             path: "/_healthz"
