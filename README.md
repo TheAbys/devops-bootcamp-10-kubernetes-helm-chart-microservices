@@ -118,33 +118,3 @@ Install all services
 Uninstall all services
 
     helmfile destory
-
-
-
-# 1 - 
-
-There are multiple solutions to handle containers in the cloud, self-managed, semi-managed and fully-managed.
-
-# 2 - Create EKS cluster with AWS
-
-Create IAM role for EKS Cluster
-
-    k0938261_training_eks-cluster-role
-
-Create VPC because default VPC is not EKS optimized
-As the Control plane nodes are AWS managed they are connected in another VPC and must be able to communicate with the worker nodes in our VPC.
-
-VPCs are created through CloudFormation
-https://s3.us-west-2.amazonaws.com/amazon-eks/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml
-
-But this doesn't work because of company restrictions or because the subnets are already in use.
-
-After the EKS Cluster is set up:
-
-    aws eks update-kubeconfig --name eks-cluster-test
-
-Show API-Server url
-
-    kubectl cluster-info
-
-
